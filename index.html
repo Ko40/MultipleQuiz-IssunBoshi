@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Issun-Boshi</title>
+    <style>
+        .correct-answer {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Issun Quiz</h1>
+
+    <form id="quizForm">
+        <!-- Frage 1 -->
+        <h3>Frage 1: Warum nannten die alten Leute ihren Sohn Issun-bōshi?</h3>
+        <label><input type="radio" name="q1" value="A"> A) Weil er stark war.</label><br>
+        <label><input type="radio" name="q1" value="B"> B) Weil er so klein wie ein Daumen war.</label><br>
+        <label><input type="radio" name="q1" value="C"> C) Weil er tapfer war.</label><br>
+        <label><input type="radio" name="q1" value="D"> D) Weil er klug war.</label><br>
+        <label><input type="radio" name="q1" value="E"> E) Weil er schnell laufen konnte.</label><br>
+        <p id="q1-correct" class="correct-answer"></p>
+
+        <!-- Frage 2 -->
+        <h3>Frage 2: Was wollte Issun-bōshi in Kyōto werden?</h3>
+        <label><input type="radio" name="q2" value="A"> A) Ein Bauer.</label><br>
+        <label><input type="radio" name="q2" value="B"> B) Ein Kaufmann.</label><br>
+        <label><input type="radio" name="q2" value="C"> C) Ein Samurai.</label><br>
+        <label><input type="radio" name="q2" value="D"> D) Ein König.</label><br>
+        <label><input type="radio" name="q2" value="E"> E) Ein Lehrer.</label><br>
+        <p id="q2-correct" class="correct-answer"></p>
+
+        <!-- Frage 3 -->
+        <h3>Frage 3: Was nutzte Issun-bōshi als Schwert?</h3>
+        <label><input type="radio" name="q3" value="A"> A) Ein Schwert aus Metall.</label><br>
+        <label><input type="radio" name="q3" value="B"> B) Ein kleines Messer.</label><br>
+        <label><input type="radio" name="q3" value="C"> C) Eine Nadel.</label><br>
+        <label><input type="radio" name="q3" value="D"> D) Ein Holzstab.</label><br>
+        <label><input type="radio" name="q3" value="E"> E) Einen Zahnstocher.</label><br>
+        <p id="q3-correct" class="correct-answer"></p>
+
+        <!-- Frage 4 -->
+        <h3>Frage 4: Wie besiegte Issun-bōshi den Oni?</h3>
+        <label><input type="radio" name="q4" value="A"> A) Er stach den Oni von innen mit seinem Nadel-Schwert.</label><br>
+        <label><input type="radio" name="q4" value="B"> B) Er rief die Götter um Hilfe.</label><br>
+        <label><input type="radio" name="q4" value="C"> C) Er bat die Tochter um Hilfe.</label><br>
+        <label><input type="radio" name="q4" value="D"> D) Er versteckte sich vor dem Oni.</label><br>
+        <label><input type="radio" name="q4" value="E"> E) Er kämpfte mit bloßen Händen.</label><br>
+        <p id="q4-correct" class="correct-answer"></p>
+
+        <!-- Frage 5 -->
+        <h3>Frage 5: Was geschah, nachdem Issun-bōshi den magischen Hammer benutzt hatte?</h3>
+        <label><input type="radio" name="q5" value="A"> A) Er wurde ein Oni.</label><br>
+        <label><input type="radio" name="q5" value="B"> B) Er wurde groß und stark.</label><br>
+        <label><input type="radio" name="q5" value="C"> C) Er wurde ein König.</label><br>
+        <label><input type="radio" name="q5" value="D"> D) Er verschwand spurlos.</label><br>
+        <label><input type="radio" name="q5" value="E"> E) Er bekam Flügel.</label><br>
+        <p id="q5-correct" class="correct-answer"></p>
+
+        <br>
+        <input type="button" value="Ergebnisse anzeigen" onclick="calculateScore()">
+    </form>
+
+    <h2 id="score"></h2>
+
+    <script>
+        function calculateScore() {
+            // Richtige Antworten
+            const correctAnswers = {
+                q1: 'E',
+                q2: 'C',
+                q3: 'C',
+                q4: 'A',
+                q5: 'B'
+            };
+
+            let score = 0;
+            const form = document.forms['quizForm'];
+
+            // Durch alle Fragen iterieren
+            for (let question in correctAnswers) {
+                const userAnswer = form[question].value;
+                const correctAnswer = correctAnswers[question];
+
+                // Richtig oder falsch überprüfen und Punkt hinzufügen
+                if (userAnswer === correctAnswer) {
+                    score++;
+                }
+
+                // Richtige Antwort anzeigen
+                document.getElementById(`${question}-correct`).innerText = `Die richtige Antwort ist: ${correctAnswer}`;
+            }
+
+            // Score anzeigen
+            document.getElementById('score').innerText = `Dein Ergebnis: ${score}/5`;
+        }
+    </script>
+</body>
+</html>
